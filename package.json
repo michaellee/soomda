@@ -1,6 +1,6 @@
 {
-	"name": "obsidian-soomda",
-	"version": "1.0.0",
+	"name": "soomda",
+	"version": "1.0.1",
 	"description": "Quickly hide your sidebars.",
 	"main": "main.js",
 	"scripts": {
