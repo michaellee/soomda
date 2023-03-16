@@ -3,7 +3,7 @@
 	"name": "Soomda",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
+	"description": "Quickly hide your sidebars",
 	"author": "Michael Lee",
 	"authorUrl": "https://michaelsoolee.com",
 	"fundingUrl": {
