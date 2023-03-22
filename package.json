@@ -1,6 +1,6 @@
 {
 	"name": "soomda",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Quickly hide your sidebars.",
 	"main": "main.js",
 	"scripts": {

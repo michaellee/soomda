@@ -1,7 +1,7 @@
 {
 	"id": "soomda",
 	"name": "Soomda",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.15.0",
 	"description": "Quickly hide your sidebars",
 	"author": "Michael Lee",
