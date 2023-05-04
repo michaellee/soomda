@@ -146,29 +146,31 @@ export default class SoomdaPlugin extends Plugin {
 	}
 
 	async checkSidebars() {
-		const workspace = this.app.workspace;
-		const leftSplit = workspace.leftSplit;
-		const rightSplit = workspace.rightSplit;
+		
+		this.app.workspace.onLayoutReady(async () => {
+			const leftSplit = this.app.workspace.leftSplit;
+			const rightSplit = this.app.workspace.rightSplit;
+		
+			if (!leftSplit.collapsed && !rightSplit.collapsed) {
+				this.settings.both = true;
+				this.settings.justLeft = false;
+				this.settings.justRight = false;
+			}
 
-		if (!leftSplit.collapsed && !rightSplit.collapsed) {
-			this.settings.both = true;
-			this.settings.justLeft = false;
-			this.settings.justRight = false;
-		}
+			if (leftSplit.collapsed && !rightSplit.collapsed) {
+				this.settings.justRight = true;
+				this.settings.justLeft = false;
+				this.settings.both = false;
+			}
 
-		if (leftSplit.collapsed && !rightSplit.collapsed) {
-			this.settings.justRight = true;
-			this.settings.justLeft = false;
-			this.settings.both = false;
-		}
-
-		if (rightSplit.collapsed && !leftSplit.collapsed) {
-			this.settings.justRight = false;
-			this.settings.justLeft = true;
-			this.settings.both = false;
-		}
-
-		await this.saveSettings();
+			if (rightSplit.collapsed && !leftSplit.collapsed) {
+				this.settings.justRight = false;
+				this.settings.justLeft = true;
+				this.settings.both = false;
+			}
+			
+			await this.saveSettings();
+		})
 	}
 }
 
@@ -209,10 +211,7 @@ class SoomdaSettingTab extends PluginSettingTab {
 				title
 					.setValue(this.plugin.settings.rememberSidebar)
 					.onChange(async () => {
-						this.plugin.settings.rememberSidebar = this.plugin
-							.settings.rememberSidebar
-							? false
-							: true;
+						this.plugin.settings.rememberSidebar = await this.plugin.settings.rememberSidebar ? false : true;
 						await this.plugin.saveSettings();
 					})
 			);
